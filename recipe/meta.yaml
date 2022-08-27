@@ -1,7 +1,7 @@
 {% set name = "FreeFem" %}
 {% set version = "4.11" %}
 {% set sha256 = "d0c6921791e5f94646d8dde4d9ed3c11b979e47e7bbb3c0a66467b04dd56983a" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 package:
   name: {{ name|lower }}
