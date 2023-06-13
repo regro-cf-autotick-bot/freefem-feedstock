@@ -1,6 +1,6 @@
 {% set name = "FreeFem" %}
-{% set version = "4.12" %}
-{% set sha256 = "291c5f46761711d6303914f9c4f165fd85a7b7b69141f7473e0b6484ce6ab0f5" %}
+{% set version = "4.13" %}
+{% set sha256 = "d296adc42c6b0cc5f148c44b00bea15939d6c0dbe391613dea8a0693c2c0e3b7" %}
 {% set build = 0 %}
 
 package:
@@ -22,7 +22,6 @@ requirements:
     - autoconf
     - automake
     - bison
-    - cmake
     - flex
     - m4
     - make
@@ -36,6 +35,15 @@ requirements:
     - suitesparse
     - superlu
     - tetgen
+
+test:
+  commands:
+    - test -f $PREFIX/bin/FreeFem++  # [unix]
+    - test -f $PREFIX/bin/FreeFem++-nw  # [unix]
+    - test -f $PREFIX/bin/ff-c++  # [unix]
+    - test -f $PREFIX/bin/ff-get-dep  # [unix]
+    - test -f $PREFIX/bin/ff-pkg-download  # [unix]
+    - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/tutorial/beam.edp  # [unix]
 
 about:
   home: https://freefem.org/
