@@ -9,6 +9,7 @@ export LIBRARY_PATH="${PREFIX}/lib"
 export LD_LIBRARY_PATH="${PREFIX}/lib"
 
 ./configure --prefix=$PREFIX \
+            --exec-prefix==$PREFIX \
             --enable-optim \
             --enable-debug \
             --without-mpi \
