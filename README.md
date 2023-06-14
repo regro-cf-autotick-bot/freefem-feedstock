@@ -1,11 +1,11 @@
-About freefem
-=============
+About freefem-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/freefem-feedstock/blob/main/LICENSE.txt)
 
 Home: https://freefem.org/
 
 Package license: LGPL-3.0-only
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/freefem-feedstock/blob/main/LICENSE.txt)
 
 Summary: FreeFem : A high level multiphysics finite element software
 
@@ -38,6 +38,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17061&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freefem-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=17061&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/freefem-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
                 </a>
               </td>
             </tr>
