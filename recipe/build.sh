@@ -9,15 +9,13 @@ export LIBRARY_PATH="${PREFIX}/lib"
 export LD_LIBRARY_PATH="${PREFIX}/lib"
 
 ./configure --prefix=$PREFIX \
-            --exec-prefix=$PREFIX \
-            --bindir=$PREFIX/bin \
             --enable-optim \
             --enable-debug \
             --without-mpi \
             --disable-fortran
 
 make -j $CPU_COUNT
-make install
+make DESTDIR=$PREFIX install
 rm $PREFIX/lib/ff++/${PKG_VERSION}/lib/*.so # to avoid conda DSO errors
 rm $PREFIX/lib/ff++/${PKG_VERSION}/lib/*.a # static libraries are not allowed
 make check -j $CPU_COUNT check
