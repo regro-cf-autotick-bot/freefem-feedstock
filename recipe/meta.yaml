@@ -10,10 +10,12 @@ package:
 source:
   url: https://github.com/{{ name }}/{{ name }}-sources/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - Makefile.am_conda.patch
 
 build:
   number: {{ build }}
-  skip: true  # [py2k or osx or win]
+  skip: true  # [py2k or win]
 
 requirements:
   build:
@@ -44,7 +46,7 @@ test:
     - test -f $PREFIX/bin/ff-c++  # [unix]
     - test -f $PREFIX/bin/ff-get-dep  # [unix]
     - test -f $PREFIX/bin/ff-pkg-download  # [unix]
-    - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/tutorial/beam.edp  # [unix]
+    - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/tutorial/beam.edp  # [linux]
 
 about:
   home: https://freefem.org/
