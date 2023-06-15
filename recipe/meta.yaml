@@ -46,7 +46,7 @@ test:
     - test -f $PREFIX/bin/ff-c++  # [unix]
     - test -f $PREFIX/bin/ff-get-dep  # [unix]
     - test -f $PREFIX/bin/ff-pkg-download  # [unix]
-    - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/tutorial/beam.edp  # [unix]
+    - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/tutorial/beam.edp  # [linux]
 
 about:
   home: https://freefem.org/
