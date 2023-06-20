@@ -1,0 +1,18 @@
+arpack:
+- '3.7'
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+hdf5:
+- 1.14.0
+m2w64_c_compiler:
+- m2w64-toolchain
+m2w64_cxx_compiler:
+- m2w64-toolchain
+suitesparse:
+- '5'
+target_platform:
+- win-64
+zlib:
+- '1.2'
