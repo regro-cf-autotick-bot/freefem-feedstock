@@ -1,7 +1,5 @@
 {% set name = "FreeFem" %}
 {% set version = "4.13" %}
-{% set sha256 = "d296adc42c6b0cc5f148c44b00bea15939d6c0dbe391613dea8a0693c2c0e3b7" %}
-{% set build = 2 %}
 
 package:
   name: {{ name|lower }}
@@ -9,13 +7,13 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}-sources/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: aefd4ff02333209f7433abef2e74acb621b6946063ff27e81cf2da43120b6ae4
   patches:
     - Makefile.am_conda.patch
 
 build:
-  number: {{ build }}
-  skip: true  # [py2k or win]
+  number: 3
+  skip: true  # [win]
 
 requirements:
   build:
