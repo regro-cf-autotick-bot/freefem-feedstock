@@ -24,6 +24,6 @@ make -j $CPU_COUNT
 make install
 #rm $PREFIX/lib/ff++/${PKG_VERSION}/lib/*.${SHLIB_EXT} || true # to avoid conda DSO errors
 #rm $PREFIX/lib/ff++/${PKG_VERSION}/lib/*.a || true # static libraries are not allowed
-#make check -j $CPU_COUNT check
+make check -j $CPU_COUNT check
 
 echo "**************** F R E E F E M  B U I L D  E N D S  H E R E ****************"
