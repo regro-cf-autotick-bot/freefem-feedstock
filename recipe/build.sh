@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 set -ex
+if [[ -n "$mpi" && "$mpi" != "nompi" ]]; then
+  export FF_OPTIONS="${FF_OPTIONS} --with-mpi=yes"
+else
+  export FF_OPTIONS="${FF_OPTIONS} --without-mpi"
+fi
 
 echo "**************** F R E E F E M  B U I L D  S T A R T S  H E R E ****************"
 
@@ -11,7 +16,8 @@ export LD_LIBRARY_PATH="${PREFIX}/lib"
 ./configure --prefix=$PREFIX \
             --enable-optim \
             --enable-debug \
-            --without-mpi \
+            ${FF_OPTIONS} \
+            --with-arpack=${PREFIX}/lib/libarpack${SHLIB_EXT} \
             --disable-fortran
 
 make -j $CPU_COUNT
