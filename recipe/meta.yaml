@@ -62,7 +62,7 @@ requirements:
     - nlopt
     - metis
     - mumps  # [mpi == 'nompi']
-    - mumpsmpi  # [mpi != 'nompi']
+    - mumps-mpi  # [mpi != 'nompi']
     - petsc
     - parmetis
     - mmgsuite
