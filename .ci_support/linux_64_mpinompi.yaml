@@ -16,8 +16,16 @@ cxx_compiler_version:
 - '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
+fftw:
+- '3'
 hdf5:
-- 1.14.2
+- 1.14.3
+mpi:
+- nompi
+mpich:
+- '4'
+openmpi:
+- '4'
 suitesparse:
 - '5'
 target_platform:
