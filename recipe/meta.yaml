@@ -1,6 +1,6 @@
 {% set name = "FreeFem" %}
 {% set version = "4.13" %}
-{% set build = 5 %}
+{% set build = 6 %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
 {% set mpi = mpi or 'nompi' %}
@@ -43,6 +43,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
     - autoconf
     - automake
     - bison
@@ -55,8 +56,21 @@ requirements:
     - arpack
     - fftw
     - gmm
+    - gsl
+    - freeglut
+    - ipopt
+    - nlopt
+    - metis
+    - mumps  # [mpi == 'nompi']
+    - mumpsmpi  # [mpi != 'nompi']
+    - petsc
+    - parmetis
+    - mmgsuite
+    - scalapack
+    - scotch
     - hdf5
-    - libopenblas
+    - lapack
+    - openblas
     - suitesparse
     - superlu
     - tetgen
@@ -73,7 +87,7 @@ test:
     - test -f $PREFIX/bin/ff-get-dep  # [unix]
     - test -f $PREFIX/bin/ff-pkg-download  # [unix]
     - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/tutorial/beam.edp  # [linux]
-#    - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/3dSurf/buildMeshSfromMesh3.edp  # [linux]
+    - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/3dSurf/buildMeshSfromMesh3.edp  # [linux]
 
 about:
   home: https://freefem.org/
