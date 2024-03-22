@@ -57,7 +57,7 @@ requirements:
     - fftw
     - gmm
     - gsl
-    - freeglut
+    - freeglut  # [linux]
     - ipopt
     - nlopt
     - metis

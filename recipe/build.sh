@@ -17,8 +17,7 @@ export LD_LIBRARY_PATH="${PREFIX}/lib"
 ./configure --prefix=$PREFIX \
             --enable-optim \
             --enable-debug \
-            ${FF_OPTIONS} #\
-            #--disable-fortran
+            ${FF_OPTIONS}
 
 make -j $CPU_COUNT
 make install
