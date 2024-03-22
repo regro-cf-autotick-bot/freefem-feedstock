@@ -1,5 +1,14 @@
 {% set name = "FreeFem" %}
 {% set version = "4.13" %}
+{% set build = 5 %}
+
+# ensure mpi is defined (needed for conda-smithy recipe-lint)
+{% set mpi = mpi or 'nompi' %}
+
+{% if mpi == 'nompi' %}
+# prioritize nompi variant via build number
+{% set build = build + 100 %}
+{% endif %}
 
 package:
   name: {{ name|lower }}
@@ -12,8 +21,23 @@ source:
     - Makefile.am_conda.patch
 
 build:
-  number: 4
+  number: {{ build }}
   skip: true  # [win]
+  # Per https://conda-forge.org/docs/maintainer/knowledge_base.html#preferring-a-provider-usually-nompi
+  # add build string so packages can depend on
+  # mpi or nompi variants explicitly:
+  # `pkg * mpi_mpich_*` for mpich
+  # `pkg * mpi_*` for any mpi
+  # `pkg * nompi_*` for no mpi
+
+  {% if mpi != 'nompi' %}
+  {% set mpi_prefix = "mpi_" + mpi %}
+  {% else %}
+  {% set mpi_prefix = "nompi" %}
+  {% endif %}
+  string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"
+  run_exports:
+    - {{ pin_subpackage('freefem', max_pin='x.x') }} {{ mpi_prefix }}_*  
 
 requirements:
   build:
@@ -29,6 +53,7 @@ requirements:
     - unzip
   host:
     - arpack
+    - fftw
     - gmm
     - hdf5
     - libopenblas
@@ -36,6 +61,9 @@ requirements:
     - superlu
     - tetgen
     - zlib
+    - {{ mpi }}  # [mpi != 'nompi']
+  run:
+    - {{ mpi }}  # [mpi != 'nompi']        
 
 test:
   commands:
@@ -45,6 +73,7 @@ test:
     - test -f $PREFIX/bin/ff-get-dep  # [unix]
     - test -f $PREFIX/bin/ff-pkg-download  # [unix]
     - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/tutorial/beam.edp  # [linux]
+#    - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/3dSurf/buildMeshSfromMesh3.edp  # [linux]
 
 about:
   home: https://freefem.org/
