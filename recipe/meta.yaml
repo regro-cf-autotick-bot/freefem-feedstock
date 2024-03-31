@@ -58,12 +58,12 @@ requirements:
     - gmm
     - gsl
     - freeglut  # [linux]
-    - ipopt
+    - ipopt  # [not osx]
     - nlopt
     - metis
     - mumps  # [mpi == 'nompi']
     - mumps-mpi  # [mpi != 'nompi']
-    - petsc  # [mpi != 'nompi']
+    - petsc  # [not osx or mpi == 'nompi']
     - parmetis
     - mmgsuite
     - scalapack
