@@ -63,7 +63,7 @@ requirements:
     - metis
     - mumps  # [mpi == 'nompi']
     - mumps-mpi  # [mpi != 'nompi']
-    - petsc  # [not osx or mpi == 'nompi']
+    - petsc  # [not osx]
     - parmetis
     - mmgsuite
     - scalapack
@@ -75,9 +75,12 @@ requirements:
     - superlu
     - tetgen
     - zlib
+    - zstd
     - {{ mpi }}  # [mpi != 'nompi']
   run:
-    - {{ mpi }}  # [mpi != 'nompi']        
+    - {{ mpi }}  # [mpi != 'nompi']
+    - {{ pin_compatible('hdf5', max_pin='x.x') }}
+    - {{ pin_compatible('lapack', max_pin='x.x') }}
 
 test:
   commands:
