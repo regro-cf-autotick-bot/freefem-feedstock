@@ -6,6 +6,10 @@ c_compiler:
 - clang
 c_compiler_version:
 - '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '10.9'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -24,8 +28,6 @@ gsl:
 - '2.7'
 hdf5:
 - 1.14.3
-ipopt:
-- 3.14.14
 macos_machine:
 - x86_64-apple-darwin13.4.0
 metis:
@@ -34,14 +36,14 @@ mpi:
 - nompi
 mpich:
 - '4'
+mumps_mpi:
+- 5.6.2
 nlopt:
 - '2.7'
 openblas:
 - 0.3.*
 openmpi:
 - '4'
-petsc:
-- '3.20'
 scotch:
 - 7.0.4
 suitesparse:
@@ -54,3 +56,5 @@ zip_keys:
   - fortran_compiler_version
 zlib:
 - '1.2'
+zstd:
+- '1.5'
