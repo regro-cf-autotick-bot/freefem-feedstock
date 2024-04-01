@@ -61,7 +61,7 @@ requirements:
     - ipopt  # [not osx]
     - nlopt
     - metis
-    - mumps  # [mpi == 'nompi']
+    - mumps  # [not osx and mpi == 'nompi']
     - mumps-mpi  # [mpi != 'nompi']
     - petsc  # [not osx]
     - parmetis
