@@ -21,7 +21,6 @@ export LD_LIBRARY_PATH="${PREFIX}/lib"
 
 make -j $CPU_COUNT
 make install
-cp $PREFIX/lib/ff++/${PKG_VERSION}/lib/msh3${SHLIB_EXT} $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/3dSurf/
 #rm $PREFIX/lib/ff++/${PKG_VERSION}/lib/*.${SHLIB_EXT} || true # to avoid conda DSO errors
 rm $PREFIX/lib/ff++/${PKG_VERSION}/lib/*.a || true # static libraries are not allowed
 make check -j $CPU_COUNT check
