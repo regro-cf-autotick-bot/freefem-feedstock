@@ -18,14 +18,32 @@ docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 fftw:
 - '3'
+fortran_compiler:
+- gfortran
+fortran_compiler_version:
+- '12'
+gsl:
+- '2.7'
 hdf5:
 - 1.14.3
+ipopt:
+- 3.14.14
+metis:
+- 5.1.0
 mpi:
 - openmpi
 mpich:
 - '4'
+nlopt:
+- '2.7'
+openblas:
+- 0.3.*
 openmpi:
 - '4'
+petsc:
+- '3.20'
+scotch:
+- 7.0.4
 suitesparse:
 - '5'
 target_platform:
@@ -33,5 +51,6 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+  - fortran_compiler_version
 zlib:
 - '1.2'
