@@ -14,9 +14,12 @@ export FFLAGS=-fallow-argument-mismatch
 export LIBRARY_PATH="${PREFIX}/lib"
 export LD_LIBRARY_PATH="${PREFIX}/lib"
 
+#            --enable-optim \
+#            --enable-static \
+#            --enable-ffcs \
+#            --enable-m64 \
 ./configure --prefix=$PREFIX \
-            --enable-optim \
-            --enable-debug \
+            --enable-summary \
             ${FF_OPTIONS}
 
 make -j $CPU_COUNT
