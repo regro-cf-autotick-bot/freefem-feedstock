@@ -1,6 +1,6 @@
 {% set name = "FreeFem" %}
 {% set version = "4.13" %}
-{% set build = 6 %}
+{% set build = 8 %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
 {% set mpi = mpi or 'nompi' %}
@@ -19,10 +19,11 @@ source:
   sha256: aefd4ff02333209f7433abef2e74acb621b6946063ff27e81cf2da43120b6ae4
   patches:
     - Makefile.am_conda.patch
+    - Makefile.am_src_bin-win32_conda.patch
 
 build:
   number: {{ build }}
-  skip: true  # [win]
+  skip: true  # [osx or win or py2ks]
   # Per https://conda-forge.org/docs/maintainer/knowledge_base.html#preferring-a-provider-usually-nompi
   # add build string so packages can depend on
   # mpi or nompi variants explicitly:
@@ -41,29 +42,42 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
-    - autoconf
-    - automake
-    - bison
-    - flex
-    - m4
-    - make
-    - patch
-    - unzip
+    - {{ compiler('c') }}  # [unix]
+    - {{ compiler('cxx') }}  # [unix]
+    - {{ compiler('fortran') }}  # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('m2w64_fortran') }}  # [win]    
+    - autoconf  # [unix]
+    - m2-autoconf  # [win]
+    - m2-automake-wrapper  # [win]
+    - automake  # [unix]
+    - bison  # [unix]
+    - m2-bison  # [win]
+    - flex  # [unix]
+    - m2-flex  # [win]
+    - m4  # [unix]
+    - m2-m4  # [win]
+    - make  # [unix]
+    - m2w64-make  # [win]    
+    - patch  # [unix]
+    - m2-patch  # [win]
+    - m2-base  # [win]    
+    - unzip  # [unix]
+    - m2-unzip  # [win]
   host:
     - arpack
     - fftw
-    - gmm
+    - gmm  # [unix]
     - gsl
     - freeglut  # [linux]
-    - ipopt  # [not osx]
+    - ipopt
     - nlopt
     - metis
     - mumps  # [not osx and mpi == 'nompi']
     - mumps-mpi  # [mpi != 'nompi']
     - petsc  # [not osx]
+    - slepc  # [unix]
     - parmetis
     - mmgsuite
     - scalapack
@@ -72,7 +86,7 @@ requirements:
     - lapack
     - openblas
     - suitesparse
-    - superlu
+    - superlu  # [unix]
     - tetgen
     - zlib
     - zstd
@@ -85,12 +99,17 @@ requirements:
 test:
   commands:
     - test -f $PREFIX/bin/FreeFem++  # [unix]
+    - if not exist $PREFIX\\bin\\FreeFem++ exit 1  # [win]    
     - test -f $PREFIX/bin/FreeFem++-nw  # [unix]
+    - if not exist $PREFIX\\bin\\FreeFem++-nw exit 1  # [win] 
     - test -f $PREFIX/bin/ff-c++  # [unix]
+    - if not exist $PREFIX\\bin\\ff-c++ exit 1  # [win] 
     - test -f $PREFIX/bin/ff-get-dep  # [unix]
-    - test -f $PREFIX/bin/ff-pkg-download  # [unix]
+    - if not exist $PREFIX\\bin\\ff-get-dep exit 1  # [win]
+    - test -f $PREFIX/bin/ff-pkg-download  # [unix
+    - if not exist $PREFIX\\bin\\ff-pkg-download exit 1  # [win]
     - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/tutorial/beam.edp  # [linux]
-    - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/3dSurf/buildMeshSfromMesh3.edp  # [osx]
+    - FreeFem++ $PREFIX/share/FreeFEM/${PKG_VERSION}/examples/3dSurf/buildMeshSfromMesh3.edp  # [linux]
 
 about:
   home: https://freefem.org/
