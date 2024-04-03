@@ -6,6 +6,12 @@ else
   export FF_OPTIONS="${FF_OPTIONS} --without-mpi"
 fi
 
+if [[ "$ARCH" == "64" ]]; then
+  export FF_OPTIONS="${FF_OPTIONS} --enable-m64"
+else
+  export FF_OPTIONS="${FF_OPTIONS} --enable-m32"
+fi
+
 echo "**************** F R E E F E M  B U I L D  S T A R T S  H E R E ****************"
 
 autoreconf -i
@@ -17,8 +23,7 @@ export LD_LIBRARY_PATH="${PREFIX}/lib"
 ./configure --prefix=$PREFIX \
             ${FF_OPTIONS} \
             --enable-summary \
-            --enable-optim \
-            --enable-m64
+            --enable-optim
 
 make -j $CPU_COUNT
 make install
