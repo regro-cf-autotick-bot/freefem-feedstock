@@ -18,7 +18,6 @@ export LD_LIBRARY_PATH="${PREFIX}/lib"
             ${FF_OPTIONS} \
             --enable-summary \
             --enable-optim \
-            --enable-ffcs \
             --enable-m64
 
 make -j $CPU_COUNT
