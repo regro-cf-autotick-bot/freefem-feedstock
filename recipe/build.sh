@@ -15,7 +15,6 @@ export LIBRARY_PATH="${PREFIX}/lib"
 export LD_LIBRARY_PATH="${PREFIX}/lib"
 
 #            --enable-optim \
-#            --enable-static \
 #            --enable-ffcs \
 #            --enable-m64 \
 ./configure --prefix=$PREFIX \
@@ -24,6 +23,7 @@ export LD_LIBRARY_PATH="${PREFIX}/lib"
 
 make -j $CPU_COUNT
 make install
+cp $PREFIX/lib/ff++/${PKG_VERSION}/lib/msh3.${SHLIB_EXT} $PREFIX/lib
 #rm $PREFIX/lib/ff++/${PKG_VERSION}/lib/*.${SHLIB_EXT} || true # to avoid conda DSO errors
 rm $PREFIX/lib/ff++/${PKG_VERSION}/lib/*.a || true # static libraries are not allowed
 make check -j $CPU_COUNT check

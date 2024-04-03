@@ -65,7 +65,6 @@ requirements:
     - m2-base  # [win]    
     - unzip  # [unix]
     - m2-unzip  # [win]
-    - libtool  # [unix]
   host:
     - arpack
     - fftw
