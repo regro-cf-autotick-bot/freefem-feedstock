@@ -1,6 +1,6 @@
 {% set name = "FreeFem" %}
 {% set version = "4.13" %}
-{% set build = 9 %}
+{% set build = 10 %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
 {% set mpi = mpi or 'nompi' %}
@@ -43,9 +43,11 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}  # [unix]
+    - {{ stdlib("c") }}    # [unix]
     - {{ compiler('cxx') }}  # [unix]
     - {{ compiler('fortran') }}  # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
+    - {{ stdlib("c") }}          # [win]
     - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ compiler('m2w64_fortran') }}  # [win]    
     - autoconf  # [unix]
