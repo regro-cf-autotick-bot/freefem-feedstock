@@ -1,6 +1,6 @@
 {% set name = "FreeFem" %}
 {% set version = "4.13" %}
-{% set build = 11 %}
+{% set build = 12 %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
 {% set mpi = mpi or 'nompi' %}
@@ -76,7 +76,7 @@ requirements:
     - ipopt
     - nlopt
     - metis
-    - mumps  # [not osx and mpi == 'nompi']
+    - mumps-seq  # [not osx and mpi == 'nompi']
     - mumps-mpi  # [mpi != 'nompi']
     - petsc  # [not osx]
     - slepc  # [unix]
