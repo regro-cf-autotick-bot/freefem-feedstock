@@ -1,0 +1,10 @@
+__migrator:
+  kind: version
+  build_number: 1
+  commit_message: Rebuild for mumps 5.7.0
+  migration_number: 1
+migrator_ts: 1714390050
+mumps_mpi:
+- '5.7.0'
+mumps_seq:
+- '5.7.0'
