@@ -39,9 +39,9 @@ mpi:
 mpich:
 - '4'
 mumps_mpi:
-- 5.7.0
+- 5.7.1
 mumps_seq:
-- 5.7.0
+- 5.7.1
 nlopt:
 - '2.7'
 openblas:
