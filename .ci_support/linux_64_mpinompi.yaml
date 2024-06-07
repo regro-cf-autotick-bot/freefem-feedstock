@@ -47,7 +47,7 @@ nlopt:
 openblas:
 - 0.3.*
 openmpi:
-- '4'
+- '5'
 petsc:
 - '3.21'
 scotch:
@@ -65,6 +65,6 @@ zip_keys:
 - - c_stdlib_version
   - cdt_name
 zlib:
-- '1.2'
+- '1'
 zstd:
 - '1.5'
