@@ -8,8 +8,6 @@ c_stdlib:
 - sysroot
 c_stdlib_version:
 - '2.17'
-cdt_name:
-- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -31,7 +29,7 @@ gsl:
 hdf5:
 - 1.14.6
 ipopt:
-- 3.14.17
+- 3.14.19
 metis:
 - 5.1.0
 mpi:
@@ -39,9 +37,9 @@ mpi:
 mpich:
 - '4'
 mumps_mpi:
-- 5.7.3
+- 5.8.1
 mumps_seq:
-- 5.7.3
+- 5.8.1
 nlopt:
 - '2.10'
 openblas:
@@ -49,11 +47,11 @@ openblas:
 openmpi:
 - '5'
 petsc:
-- '3.23'
+- '3.24'
 scotch:
-- 7.0.6
+- 7.0.10
 slepc:
-- '3.23'
+- '3.24'
 suitesparse:
 - '7'
 target_platform:
