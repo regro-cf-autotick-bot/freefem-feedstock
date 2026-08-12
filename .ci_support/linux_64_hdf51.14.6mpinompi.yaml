@@ -1,0 +1,66 @@
+arpack:
+- '3.9'
+c_compiler:
+- gcc
+c_compiler_version:
+- '14'
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.17'
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- gxx
+cxx_compiler_version:
+- '14'
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:alma10
+fftw:
+- '3'
+fortran_compiler:
+- gfortran
+fortran_compiler_version:
+- '14'
+gsl:
+- '2.7'
+hdf5:
+- 1.14.6
+ipopt:
+- 3.14.19
+metis:
+- 5.1.0
+mpi:
+- nompi
+mpich:
+- '4'
+mumps_mpi:
+- 5.8.2
+mumps_seq:
+- 5.8.2
+nlopt:
+- '2.11'
+openblas:
+- 0.3.*
+openmpi:
+- '5'
+petsc:
+- '3.25'
+scotch:
+- 7.0.11
+slepc:
+- '3.25'
+suitesparse:
+- '7'
+target_platform:
+- linux-64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
+  - fortran_compiler_version
+zlib:
+- '1'
+zstd:
+- '1.5'
